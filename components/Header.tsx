@@ -7,7 +7,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ title }) => {
   return (
-    <div className="h-16 border-b border-gray-200 flex items-center justify-between px-6">
+    <div className="h-16 border-b bg-[#FFFFFF] border-gray-200 flex items-center justify-between px-6">
       <h1 className="text-[14px] font-normal">{title}</h1>
 
       <div className="flex items-center gap-2">
@@ -26,7 +26,7 @@ const Header: React.FC<HeaderProps> = ({ title }) => {
           </svg>
           <ToggleSwitch size="small" />
         </div>
-        <div className="flex gap-1 items-center mr-6 text-gray-600 border-1 rounded-[10px] border-[#D9D9D9] p-2">
+        <div className="flex gap-1 items-center mr-6 text-gray-600 border-1 rounded-[10px] border-[#D9D9D9] p-2 cursor-pointer">
           <svg
             width="16"
             height="17"

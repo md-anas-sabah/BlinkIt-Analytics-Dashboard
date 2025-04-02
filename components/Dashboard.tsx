@@ -8,6 +8,14 @@ import SemiPieChart from "./dashboard/SemiPieChart";
 import DataTable from "./dashboard/DataTable";
 import ValueWithIndicator from "./ui/ValueWithIndicator";
 
+const scrollbarHiddenStyle = {
+  scrollbarWidth: "none", // Firefox
+  msOverflowStyle: "none", // IE and Edge
+  "&::-webkit-scrollbar": {
+    display: "none",
+  },
+};
+
 const Dashboard: React.FC = () => {
   const { config, data, loading, error, activeTab, setActiveTab } =
     useDashboard();
@@ -110,76 +118,93 @@ const Dashboard: React.FC = () => {
   ];
 
   return (
-    <div className="flex-1 h-screen flex flex-col overflow-hidden">
-      <Header title="Quick Commerce" />
+    <div className="flex-1 h-screen flex flex-col p-2">
+      <div className="border-1 rounded-[10px] border-[#D9D9D9] overflow-scroll">
+        <Header title="Quick Commerce" />
 
-      <div className="flex-1 overflow-y-auto p-6">
-        <Tabs tabs={tabs} activeTab={activeTab} onTabChange={setActiveTab} />
-
-        <div className="grid grid-cols-3 gap-6 mb-6">
-          {sortedCards.map((card) => {
-            if (!card.active || card.gridstackProperties.y > 1) return null;
-
-            switch (card.visualizationType) {
-              case "linechart":
-                return (
-                  <LineChartCard
-                    key={card.id}
-                    title={card.title}
-                    data={data[card.id]}
-                    dataKey={
-                      card.id === "sales-mrp"
-                        ? "blinkit_insights_city.sales_mrp_sum"
-                        : "blinkit_insights_city.quantity_sum"
-                    }
-                  />
-                );
-              case "semipiechart":
-                return (
-                  <SemiPieChart
-                    key={card.id}
-                    title={card.title}
-                    data={data[card.id]}
-                  />
-                );
-              default:
-                return null;
+        <div
+          className="flex-1 overflow-y-auto p-6"
+          style={{
+            scrollbarWidth: "none",
+            msOverflowStyle: "none",
+          }}
+        >
+          <style jsx global>{`
+            ::-webkit-scrollbar {
+              display: none;
             }
+          `}</style>
+
+          <Tabs tabs={tabs} activeTab={activeTab} onTabChange={setActiveTab} />
+
+          <div className="grid grid-cols-3 gap-6 mb-6">
+            {sortedCards.map((card) => {
+              if (!card.active || card.gridstackProperties.y > 1) return null;
+
+              switch (card.visualizationType) {
+                case "linechart":
+                  return (
+                    <LineChartCard
+                      key={card.id}
+                      title={card.title}
+                      data={data[card.id]}
+                      dataKey={
+                        card.id === "sales-mrp"
+                          ? "blinkit_insights_city.sales_mrp_sum"
+                          : "blinkit_insights_city.quantity_sum"
+                      }
+                    />
+                  );
+                case "semipiechart":
+                  return (
+                    <SemiPieChart
+                      key={card.id}
+                      title={card.title}
+                      data={data[card.id]}
+                    />
+                  );
+                default:
+                  return null;
+              }
+            })}
+          </div>
+
+          {sortedCards.map((card) => {
+            if (!card.active || card.visualizationType !== "table") return null;
+
+            if (card.id === "sku-data") {
+              return (
+                <DataTable
+                  key={card.id}
+                  title={card.title}
+                  subtitle={card.description || ""}
+                  data={data[card.id]}
+                  columns={generateTableColumns(
+                    "blinkit_insights_sku",
+                    "sku_name"
+                  )}
+                />
+              );
+            }
+
+            if (card.id === "city-data") {
+              return (
+                <DataTable
+                  key={card.id}
+                  title={card.title}
+                  subtitle={card.description || ""}
+                  data={data[card.id]}
+                  columns={generateTableColumns(
+                    "blinkit_insights_city",
+                    "city"
+                  )}
+                />
+              );
+            }
+
+            return null;
           })}
         </div>
-
-        {sortedCards.map((card) => {
-          if (!card.active || card.visualizationType !== "table") return null;
-
-          if (card.id === "sku-data") {
-            return (
-              <DataTable
-                key={card.id}
-                title={card.title}
-                subtitle={card.description || ""}
-                data={data[card.id]}
-                columns={generateTableColumns(
-                  "blinkit_insights_sku",
-                  "sku_name"
-                )}
-              />
-            );
-          }
-
-          if (card.id === "city-data") {
-            return (
-              <DataTable
-                key={card.id}
-                title={card.title}
-                subtitle={card.description || ""}
-                data={data[card.id]}
-                columns={generateTableColumns("blinkit_insights_city", "city")}
-              />
-            );
-          }
-
-          return null;
-        })}
       </div>
     </div>
   );
