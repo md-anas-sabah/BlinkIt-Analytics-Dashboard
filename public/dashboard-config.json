@@ -1,0 +1,144 @@
+{
+  "id": "blinkit-analytics",
+  "brandId": "49",
+  "name": "BlinkIt Analytics",
+  "description": "Analytics dashboard for BlinkIt",
+  "logo": "/logos/blinkit-logo.png",
+  "active": true,
+  "cards": [
+    {
+      "visualizationType": "linechart",
+      "title": "Sales (MRP)",
+      "id": "sales-mrp",
+      "logo": "",
+      "description": "Sales MRP chart",
+      "gridstackProperties": {
+        "x": 0,
+        "y": 0,
+        "w": 6,
+        "h": 2
+      },
+      "query": [
+        "{\"measures\":[\"blinkit_insights_city.sales_mrp_sum\"],\"timeDimensions\":[{\"dimension\":\"blinkit_insights_city.created_at\",\"dateRange\":\"This month\"}]}",
+        "{\"measures\":[\"blinkit_insights_city.sales_mrp_sum\"],\"timeDimensions\":[{\"dimension\":\"blinkit_insights_city.created_at\",\"granularity\":\"day\",\"dateRange\":[\"2025-02-01\",\"2025-02-28\"]}],\"order\":{\"blinkit_insights_city.created_at\":\"asc\"}}"
+      ],
+      "active": true
+    },
+    {
+      "visualizationType": "linechart",
+      "title": "Total Quantity Sold",
+      "id": "quantity-sold",
+      "logo": "",
+      "description": "Total quantity sold chart",
+      "gridstackProperties": {
+        "x": 6,
+        "y": 0,
+        "w": 6,
+        "h": 2
+      },
+      "query": [
+        "{\"measures\":[\"blinkit_insights_city.quantity_sum\"],\"timeDimensions\":[{\"dimension\":\"blinkit_insights_city.created_at\",\"dateRange\":\"This month\"}]}",
+        "{\"measures\":[\"blinkit_insights_city.quantity_sum\"],\"timeDimensions\":[{\"dimension\":\"blinkit_insights_city.created_at\",\"granularity\":\"day\",\"dateRange\":[\"2025-02-01\",\"2025-02-28\"]}],\"order\":{\"blinkit_insights_city.created_at\":\"asc\"}}"
+      ],
+      "active": true
+    },
+    {
+      "visualizationType": "semipiechart",
+      "title": "Top Cities",
+      "id": "top-cities",
+      "logo": "",
+      "description": "Top cities by sales",
+      "gridstackProperties": {
+        "x": 12,
+        "y": 0,
+        "w": 6,
+        "h": 2
+      },
+      "query": [
+        "{\"measures\":[\"blinkit_insights_city.sales_mrp_sum\"],\"timeDimensions\":[{\"dimension\":\"blinkit_insights_city.created_at\",\"dateRange\":[\"2025-02-01\",\"2025-02-28\"]}]}",
+        "{\"measures\":[\"blinkit_insights_city.sales_mrp_sum\"],\"dimensions\":[\"blinkit_insights_city.city\"],\"timeDimensions\":[{\"dimension\":\"blinkit_insights_city.created_at\",\"dateRange\":[\"2025-02-01\",\"2025-02-28\"]}],\"order\":{\"blinkit_insights_city.sales_mrp_sum\":\"desc\"},\"limit\":4}"
+      ],
+      "active": true
+    },
+    {
+      "visualizationType": "table",
+      "title": "SKU level data",
+      "id": "sku-data",
+      "logo": "",
+      "description": "Analytics for all your SKUs",
+      "gridstackProperties": {
+        "x": 0,
+        "y": 2,
+        "w": 18,
+        "h": 3
+      },
+      "query": [
+        "{\"measures\":[\"blinkit_insights_sku.sales_mrp_sum\",\"blinkit_insights_sku.inventory_sum\",\"blinkit_insights_sku.out_of_stock_percentage\",\"blinkit_insights_sku.average_rank\",\"blinkit_insights_sku.estimated_traffic\",\"blinkit_insights_sku.estimated_impressions\",\"blinkit_insights_sku.ctr_percentage\"],\"dimensions\":[\"blinkit_insights_sku.sku_name\"],\"timeDimensions\":[{\"dimension\":\"blinkit_insights_sku.created_at\",\"dateRange\":[\"2025-02-01\",\"2025-02-28\"]}],\"order\":{\"blinkit_insights_sku.sales_mrp_sum\":\"desc\"},\"limit\":10}"
+      ],
+      "datatableProperties": {
+        "columnOrder": [
+          "blinkit_insights_sku.sku_name",
+          "blinkit_insights_sku.sales_mrp_sum",
+          "blinkit_insights_sku.out_of_stock_percentage",
+          "blinkit_insights_sku.inventory_sum",
+          "blinkit_insights_sku.average_rank",
+          "blinkit_insights_sku.estimated_traffic",
+          "blinkit_insights_sku.estimated_impressions",
+          "blinkit_insights_sku.ctr_percentage"
+        ],
+        "columnsPinned": ["blinkit_insights_sku.sku_name"],
+        "columnsVisible": {
+          "blinkit_insights_sku.sku_name": true,
+          "blinkit_insights_sku.sales_mrp_sum": true,
+          "blinkit_insights_sku.out_of_stock_percentage": true,
+          "blinkit_insights_sku.inventory_sum": true,
+          "blinkit_insights_sku.average_rank": true,
+          "blinkit_insights_sku.estimated_traffic": true,
+          "blinkit_insights_sku.estimated_impressions": true,
+          "blinkit_insights_sku.ctr_percentage": true
+        }
+      },
+      "active": true
+    },
+    {
+      "visualizationType": "table",
+      "title": "City level data",
+      "id": "city-data",
+      "logo": "",
+      "description": "Analytics for all your Cities",
+      "gridstackProperties": {
+        "x": 0,
+        "y": 5,
+        "w": 18,
+        "h": 3
+      },
+      "query": [
+        "{\"measures\":[\"blinkit_insights_city.sales_mrp_sum\",\"blinkit_insights_city.inventory_sum\",\"blinkit_insights_city.out_of_stock_percentage\",\"blinkit_insights_city.average_rank\",\"blinkit_insights_city.estimated_traffic\",\"blinkit_insights_city.estimated_impressions\",\"blinkit_insights_city.ctr_percentage\"],\"dimensions\":[\"blinkit_insights_city.city\"],\"timeDimensions\":[{\"dimension\":\"blinkit_insights_city.created_at\",\"dateRange\":[\"2025-02-01\",\"2025-02-28\"]}],\"order\":{\"blinkit_insights_city.sales_mrp_sum\":\"desc\"},\"limit\":10}"
+      ],
+      "datatableProperties": {
+        "columnOrder": [
+          "blinkit_insights_city.city",
+          "blinkit_insights_city.sales_mrp_sum",
+          "blinkit_insights_city.out_of_stock_percentage",
+          "blinkit_insights_city.inventory_sum",
+          "blinkit_insights_city.average_rank",
+          "blinkit_insights_city.estimated_traffic",
+          "blinkit_insights_city.estimated_impressions",
+          "blinkit_insights_city.ctr_percentage"
+        ],
+        "columnsPinned": ["blinkit_insights_city.city"],
+        "columnsVisible": {
+          "blinkit_insights_city.city": true,
+          "blinkit_insights_city.sales_mrp_sum": true,
+          "blinkit_insights_city.out_of_stock_percentage": true,
+          "blinkit_insights_city.inventory_sum": true,
+          "blinkit_insights_city.average_rank": true,
+          "blinkit_insights_city.estimated_traffic": true,
+          "blinkit_insights_city.estimated_impressions": true,
+          "blinkit_insights_city.ctr_percentage": true
+        }
+      },
+      "active": true
+    }
+  ]
+}

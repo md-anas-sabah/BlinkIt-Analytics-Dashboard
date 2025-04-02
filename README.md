@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BlinkIt Analytics Dashboard
+
+A pixel-perfect implementation of the BlinkIt Analytics Dashboard design from Figma, built with Next.js and React.
+
+## Features
+
+- Exact match to the Figma design for desktop screens
+- Dynamic UI elements controlled by JSON configuration
+- Integration with Cube.JS for data fetching
+- Interactive charts using Recharts
+- Data tables with sorting and filtering capabilities
+
+## Tech Stack
+
+- Next.js 14
+- React 18
+- TypeScript
+- Tailwind CSS
+- Recharts for visualizations
+- Axios for API requests
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18.17 or later
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/your-username/blinkit-analytics.git
+cd blinkit-analytics
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This project is ready to be deployed on Vercel. Follow these steps:
 
-## Learn More
+1. Create a Vercel account if you don't have one
+2. Install the Vercel CLI:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm install -g vercel
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. Deploy the project:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+vercel
+```
 
-## Deploy on Vercel
+4. Follow the prompts to connect your GitHub repository or deploy from the local codebase.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Configuration
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The dashboard is configured through a JSON file located at `public/dashboard-config.json`. You can modify this file to:
+
+- Add or remove cards
+- Change visualization types
+- Update Cube.JS queries
+- Adjust card positions and sizes
+
+## Implementation Details
+
+- The UI is controlled by a configuration JSON file that defines each dashboard component
+- CubeJS integration is handled through a custom API utility
+- Mock data is provided for development/demonstration purposes
+- Reusable components for charts, tables, and UI elements
+- Pixel-perfect implementation matching the Figma design
