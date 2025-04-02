@@ -171,7 +171,7 @@ const Sidebar: React.FC = () => {
                     <li
                       key={subItem.id}
                       className={`
-                        px-4 py-2 text-sm cursor-pointer 
+                        px-4 py-2 text-sm cursor-pointer
                         ${
                           subItem.id === "quick-commerce"
                             ? "text-green-700 bg-green-50 font-medium"

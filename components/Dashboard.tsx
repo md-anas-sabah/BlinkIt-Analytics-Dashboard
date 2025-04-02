@@ -30,12 +30,10 @@ const Dashboard: React.FC = () => {
     { id: "instamart", name: "Instamart", color: "#EC4899" },
   ];
 
-  // Sort cards by their x position to ensure proper rendering order
   const sortedCards = [...config.cards].sort(
     (a, b) => a.gridstackProperties.x - b.gridstackProperties.x
   );
 
-  // Generate table columns for SKU and City level data
   const generateTableColumns = (columnPrefix: string, nameField: string) => [
     {
       id: `${columnPrefix}.${nameField}`,
