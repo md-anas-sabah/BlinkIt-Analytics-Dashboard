@@ -1,60 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap");
 @import "tailwindcss";
-
-/* :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  @tailwind base;
-  @tailwind components;
-  @tailwind utilities;
-
-  :root {
-    --foreground-rgb: 0, 0, 0;
-    --background-start-rgb: 248, 250, 252;
-    --background-end-rgb: 248, 250, 252;
-  }
-
-  body {
-    color: rgb(var(--foreground-rgb));
-    background: linear-gradient(
-        to bottom,
-        transparent,
-        rgb(var(--background-end-rgb))
-      )
-      rgb(var(--background-start-rgb));
-  }
-
-  @layer base {
-    input[type="checkbox"] {
-      @apply w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 focus:ring-2;
-    }
-  }
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-} */
-
 
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 248, 250, 252;
   --background-end-rgb: 248, 250, 252;
+  font-family: "Mulish";
 }
 
 body {
