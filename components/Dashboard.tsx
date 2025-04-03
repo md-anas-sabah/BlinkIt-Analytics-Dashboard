@@ -34,9 +34,39 @@ const Dashboard: React.FC = () => {
   }
 
   const tabs = [
-    { id: "blinkit", name: "Blinkit", color: "#F59E0B" },
-    { id: "zepto", name: "Zepto", color: "#8B5CF6" },
-    { id: "instamart", name: "Instamart", color: "#EC4899" },
+    {
+      id: "blinkit",
+      name: "Blinkit",
+      logoColor: "#F4D03F",
+      textColor: "#2E8B57",
+      logo: (
+        <div className="w-6 h-6 bg-yellow-400 flex items-center justify-center">
+          <span className="text-[6px] font-bold">blinkit</span>
+        </div>
+      ),
+    },
+    {
+      id: "zepto",
+      name: "Zepto",
+      logoColor: "#D8BFD8",
+      textColor: "#808080",
+      logo: (
+        <div className="w-6 h-6 bg-purple-200 flex items-center justify-center">
+          <span className="text-[6px] font-bold">zepto</span>
+        </div>
+      ),
+    },
+    {
+      id: "instamart",
+      name: "Instamart",
+      logoColor: "#FFDAB9",
+      textColor: "#808080",
+      logo: (
+        <div className="w-6 h-6 bg-orange-200 flex items-center justify-center">
+          <span className="text-[4px] font-bold">instamart</span>
+        </div>
+      ),
+    },
   ];
 
   const sortedCards = [...config.cards].sort(
@@ -122,9 +152,35 @@ const Dashboard: React.FC = () => {
     <div className="flex-1 h-screen flex flex-col p-2">
       <div className="border-1 rounded-[10px] border-[#D9D9D9] overflow-scroll">
         <Header title="Quick Commerce" />
+        <div className="h-16 border-b bg-[#FFFFFF] border-gray-200 flex items-center justify-between px-6">
+          <div className="w-fit">
+            <div className="border flex gap-4 border-gray-200 rounded-[12px] bg-white p-1">
+              {tabs.map((tab) => (
+                <button
+                  key={tab.id}
+                  className={`cursor-pointer flex items-center space-x-2 py-1 px-4 rounded-[10px] transition-colors ${
+                    activeTab === tab.id ? "bg-[#DFEAE8]" : ""
+                  }`}
+                  onClick={() => setActiveTab(tab.id)}
+                >
+                  {tab.logo}
+                  <span
+                    className={
+                      activeTab === tab.id
+                        ? " text-[#027056]  cursor-pointer text-[14px]"
+                        : " text-gray-400 cursor-pointer text-[14px]"
+                    }
+                  >
+                    {tab.name}
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
 
         <div
-          className="flex-1 overflow-y-auto p-6"
+          className="flex-1 overflow-y-auto p-6 bg-[#FAFAFA]"
           style={{
             scrollbarWidth: "none",
             msOverflowStyle: "none",
@@ -136,9 +192,7 @@ const Dashboard: React.FC = () => {
             }
           `}</style>
 
-          <Tabs tabs={tabs} activeTab={activeTab} onTabChange={setActiveTab} />
-
-          <div className="grid grid-cols-3 gap-6 mb-6">
+          <div className="grid grid-cols-3 gap-6 mb-6 ">
             {sortedCards.map((card) => {
               if (!card.active || card.gridstackProperties.y > 1) return null;
 

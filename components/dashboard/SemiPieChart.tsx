@@ -35,7 +35,7 @@ const SemiPieChartComponent: React.FC<SemiPieChartProps> = ({
   }));
 
   return (
-    <div className="p-6 rounded-lg border border-gray-200 h-full">
+    <div className="p-6 rounded-lg border border-gray-200 h-full bg-white">
       <div className="mb-4">
         <div className="text-gray-600 text-sm mb-1">{title}</div>
         <div className="flex items-baseline">
