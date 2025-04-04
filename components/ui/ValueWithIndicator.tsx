@@ -18,7 +18,7 @@ const ValueWithIndicator: React.FC<ValueWithIndicatorProps> = ({
   const formattedValue = () => {
     if (value === undefined || value === null) return "-";
 
-    let formatted = value.toFixed(digits);
+    const formatted = value.toFixed(digits);
 
     if (currency) {
       return `₹${formatted}`;
